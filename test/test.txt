@@ -1,0 +1,3 @@
+Test file.
+It have 2 line breaks.
+And exactly 64 bytes of size.
