@@ -15,6 +15,7 @@
 require 'socket'
 require 'pathname'
 require 'fileutils'
+require 'securerandom'
 
 class HttpServer
 
@@ -108,6 +109,9 @@ protected
 
   def post(filepath, body)
     begin
+      if filepath.directory?
+        filepath = filepath.join(SecureRandom.uuid)
+      end
       File.write filepath, body
     rescue
       raise_http_error :forbidden
